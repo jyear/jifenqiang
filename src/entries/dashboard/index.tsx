@@ -5,6 +5,8 @@ let root: any = connect(
 	({ user }: any) => ({
 		user
 	}),
-	() => {}
+	() => {
+		return {};
+	}
 )(Root);
 export default withRouter(root);

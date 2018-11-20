@@ -1,9 +1,9 @@
-import React, { PureComponent } from "react";
+import * as React from "react";
 import { Pagination, Checkbox, Select, Button } from "antd";
 import PropTypes from "prop-types";
 const Option = Select.Option;
 import "./index.less";
-interface Props {
+export interface Props {
 	currentPage: number;
 	pageSize: number;
 	total: number;
@@ -14,23 +14,22 @@ interface Props {
 	pageChange: any;
 	checkBoxChange?: any;
 }
-interface State {
+export interface State {
 	batch: any;
 	batchValue: number;
 }
-export default class FooterCtrl extends PureComponent<Props, State> {
-	constructor(props: any) {
+export default class FooterCtrl extends React.PureComponent<Props, State> {
+	constructor(props: Props) {
 		super(props);
-		this.state = {
-			batch: props.batch ? props.batch : [],
-			batchValue: props.batchValue
-				? props.batchValue
-				: props.batch && props.batch.length > 0
-				? props.batch[0].value
-				: 0
-		};
 	}
-
+	readonly state = {
+		batch: this.props.batch ? this.props.batch : [],
+		batchValue: this.props.batchValue
+			? this.props.batchValue
+			: this.props.batch && this.props.batch.length > 0
+			? this.props.batch[0].value
+			: 0
+	};
 	pageChange(e: any): void {
 		let { pageChange } = this.props;
 		if (pageChange && typeof pageChange === "function") {

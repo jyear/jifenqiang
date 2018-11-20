@@ -35,18 +35,6 @@ var webpackConfig = {
 					loader: "underscore-template-loader"
 				}
 			},
-			// {
-			// 	test: /\.ts|tsx$/,
-			// 	use: [
-			// 		{
-			// 			loader: "babel-loader"
-			// 		},
-			// 		{
-			// 			loader: "ts-loader"
-			// 		}
-			// 	],
-			// 	include: rootPath
-			// },
 			{
 				test: /\.tsx?$/,
 				use: [
@@ -55,17 +43,6 @@ var webpackConfig = {
 					},
 					{
 						loader: "ts-loader"
-						// options: {
-						// 	getCustomTransformers: () => ({
-						// 		before: [
-						// 			tsImportPluginFactory({
-						// 				libraryName: "antd",
-						// 				libraryDirectory: "es",
-						// 				style: "css"
-						// 			})
-						// 		]
-						// 	})
-						// }
 					}
 				],
 				include: rootPath

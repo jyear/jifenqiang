@@ -29,7 +29,9 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => (
 						</div>
 						<div className="right">
 							<TopBar />
-							<Component {...rest} />
+							<div className="main-container">
+								<Component {...rest} />
+							</div>
 						</div>
 					</div>
 				) : (

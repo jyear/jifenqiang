@@ -2,7 +2,8 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import { LocaleProvider } from "antd";
-import zh_CN from "antd/lib/locale-provider/zh_CN";
+const zhCN = require("antd/lib/locale-provider/zh_CN");
+
 import createHistory from "history/createHashHistory";
 import { HashRouter as Router } from "react-router-dom";
 import registerServiceWorker from "./registerServiceWorker";
@@ -14,9 +15,10 @@ import "antd/dist/antd.css";
 let store: any = storeFun();
 let appHistory: any = createHistory();
 window.appHistory = appHistory;
+
 const render = (Component: any) => {
 	ReactDom.render(
-		<LocaleProvider locale={zh_CN}>
+		<LocaleProvider locale={zhCN}>
 			<Provider store={store}>
 				<Router>
 					<Component />
