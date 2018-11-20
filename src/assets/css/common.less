@@ -1,0 +1,150 @@
+html,
+body,
+#root {
+	height: 100%;
+	font-size: 12px;
+	min-width: 1300px;
+	color: #404040;
+}
+/*布局相关*/
+.ui {
+	display: flex;
+}
+.ui.column {
+	flex-flow: column;
+}
+.ui.ac {
+	align-items: center;
+}
+.ui.ae {
+	align-items: flex-end;
+}
+.ui.jc {
+	justify-content: center;
+}
+.ui.je {
+	justify-content: flex-end;
+}
+.ui .f1 {
+	flex: 1;
+	min-width: 0;
+}
+// table  tr:hover td {
+// 	background: #f2f2f2 !important;
+// }
+
+//page相关
+.pagebox {
+	display: flex;
+	flex-flow: column;
+	align-items: stretch;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 0 0.3rem;
+}
+.pagebox .body-box {
+	flex: 1;
+	display: flex;
+	flex-flow: column;
+	align-items: stretch;
+	background: #fff;
+	.tabal-body {
+		flex: 1;
+		overflow: auto;
+	}
+}
+.table-box {
+	table-layout: fixed;
+	width: 100%;
+	td {
+		padding: 0.08rem 0;
+		text-align: left;
+	}
+	.thead {
+		td {
+			text-align: center !important;
+			background: rgba(0, 0, 0, 0.1);
+		}
+	}
+	.tbody {
+		flex: 1;
+		overflow: auto;
+		td {
+			box-sizing: border-box;
+			padding-left: 0.05rem;
+			padding-right: 0.05rem;
+		}
+		tr.even td {
+			background: #fffafa;
+		}
+	}
+	.tbody tr:hover td {
+		background: #f4f4f4;
+	}
+	.td30 {
+		width: 0.3rem;
+	}
+	.td50 {
+		width: 0.5rem;
+	}
+	.td80 {
+		width: 0.8rem;
+	}
+	.td100 {
+		width: 1rem;
+	}
+	.td120 {
+		width: 1.2rem;
+	}
+	.td150 {
+		width: 1.5rem;
+	}
+	.tc {
+		text-align: center;
+	}
+	.ctrlbtn {
+		cursor: pointer;
+		color: #1890ff;
+		display: inline-block;
+		margin: 0 0.1rem;
+	}
+}
+.pagebox {
+	.ctrbtn {
+		margin-left: 0.1rem;
+		font-size: 0.14rem;
+	}
+	.inputItem {
+		margin-right: 0.1rem;
+	}
+}
+
+//编辑页面相关
+.editpage {
+	box-sizing: border-box;
+
+	padding: 0.2rem 0.3rem;
+	overflow: auto;
+	.edit-box {
+		text-align: center;
+		padding: 0.8rem 0;
+		background: #fff;
+		border-radius: 0 0 0.04rem 0.04rem;
+	}
+	.edit-save {
+		padding: 0.3rem 0;
+	}
+	.edit-save-btn {
+		width: 3rem;
+	}
+}
+.nodata {
+	font-size: 0.14rem;
+	color: #a4a4a4;
+	span {
+		font-size: 0.14rem;
+	}
+}
+.forbidden {
+	color: red;
+}

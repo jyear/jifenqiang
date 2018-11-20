@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist/",
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"module": "commonjs",
+		"target": "es5",
+		"jsx": "preserve",
+		"typeRoots": ["./node_modules/@types", "./src/@types"],
+		"allowSyntheticDefaultImports": true,
+		"experimentalDecorators": true,
+		"lib": [
+			"es2015",
+			"es2016",
+			"es2017",
+			"es2018",
+			"dom" // Or "es2015" or "es6" should work as well
+		]
+	},
+	"file": [".ts", ".tsx", ".js", ".jsx"],
+	"include": ["./src/**/*"],
+	"exclude": ["./node_modules"]
+}

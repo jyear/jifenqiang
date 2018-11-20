@@ -1,0 +1,33 @@
+.top-bar {
+	height: 0.5rem;
+	box-shadow: 0 3px 5px #ccc;
+	box-sizing: border-box;
+	padding: 0.1rem;
+	display: flex;
+	align-items: center;
+	position: relative;
+	z-index: 9;
+	.top-left {
+		flex: 1;
+	}
+	.logout {
+		color: #404040;
+		font-size: 0.2rem;
+		cursor: pointer;
+		&:hover {
+			color: #f63737;
+		}
+	}
+	.usericon {
+		font-size: 0.2rem;
+	}
+	.username {
+		margin: 0 0.1rem;
+		cursor: pointer;
+		span {
+			&:hover {
+				color: #1bacf0;
+			}
+		}
+	}
+}

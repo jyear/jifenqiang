@@ -1,0 +1,5 @@
+{
+	"development": "http://192.168.5.146:8889/api/",
+	"productiondev": "http://47.105.120.6:8889/api/",
+	"productionpro": "http://47.105.120.6/api/"
+}
