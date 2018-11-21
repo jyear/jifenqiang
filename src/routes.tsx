@@ -17,6 +17,13 @@ let pathConfig = [
 		src: "./entries/dashboard",
 		path: "/dashboard",
 		isPrivate: true
+	},
+	,
+	{
+		name: "Advert",
+		src: "./entries/advert",
+		path: "/advert",
+		isPrivate: true
 	}
 ];
 let componentObj: any = {};

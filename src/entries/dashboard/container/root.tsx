@@ -26,7 +26,10 @@ export default class Root extends ListPage<Props, State> {
 		let { page, pageSize } = this.state;
 		return (
 			<div className="list-page-box">
-				<div className="list-header">2</div>
+				<div className="list-header">
+					<div className="left-el">2</div>
+					<div className="right-el">2</div>
+				</div>
 				<div className="list-center">3</div>
 				<div className="list-footer">
 					<FooterCtrl

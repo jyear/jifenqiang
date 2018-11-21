@@ -12,66 +12,87 @@ export default class MenuBox extends React.PureComponent<Props, object> {
 		this.state = {};
 		this.navList = [
 			{
-				isGroup: false,
+				isGroup: true,
 				_name: "数据统计",
 				_icon: "dashboard",
-				_url: "/dashboard",
-				_id: 0
+				_id: 0,
+				child: [
+					{
+						_url: "/dashboard",
+						_name: "整体趋势",
+						_id: 1
+					}
+				]
 			},
 			{
-				isGroup: false,
-				_name: "广告商",
-				_icon: "shopping",
-				_url: "/advertiser",
-				_id: 1
-			},
-			{
-				isGroup: false,
+				isGroup: true,
 				_name: "广告管理",
+				_icon: "shopping",
+				_id: 2,
+				child: [
+					{
+						_url: "/advert",
+						_name: "广告列表",
+						_id: 3
+					},
+					{
+						_url: "/advertor",
+						_name: "广告主列表",
+						_id: 4
+					},
+					{
+						_url: "/applicate",
+						_name: "应用市场列表",
+						_id: 5
+					},
+					{
+						_url: "/apply",
+						_name: "审核列表",
+						_id: 6
+					}
+				]
+			},
+			{
+				isGroup: true,
+				_name: "用户管理",
 				_icon: "snippets",
-				_url: "/advert",
-				_id: 2
+				_id: 7,
+				child: [
+					{
+						_url: "/user",
+						_name: "用户列表",
+						_id: 8
+					}
+				]
 			},
 			{
-				isGroup: false,
-				_name: "广告平台",
+				isGroup: true,
+				_name: "开发者管理",
 				_icon: "highlight",
-				_url: "/publish",
-				_id: 3
-			},
-			{
-				isGroup: false,
-				_name: "广告投放",
-				_icon: "bg-colors",
-				_url: "/launch",
-				_id: 4
-			},
-			{
-				isGroup: false,
-				_name: "第三方开发管理",
-				_icon: "code",
-				_url: "/developer",
-				_id: 5
+				_id: 9,
+				child: [
+					{
+						_url: "/user",
+						_name: "开发者列表",
+						_id: 10
+					}
+				]
 			},
 			{
 				isGroup: true,
 				_name: "系统设置",
 				_icon: "setting",
+				_id: 11,
 				child: [
 					{
 						_url: "/manager",
 						_name: "管理员列表",
-						_id: 6
+						_id: 12
 					},
 					{
 						_url: "/role",
 						_name: "角色管理",
-						_id: 7
-					},
-					{
-						_url: "/tag",
-						_name: "标签管理",
-						_id: 8
+						_id: 13
 					}
 				]
 			}
@@ -100,22 +121,27 @@ export default class MenuBox extends React.PureComponent<Props, object> {
 			}
 		});
 		let res: any = {
-			selectedKeys: [`sub_${key}`]
+			defaultSelectedKeys: [`sub_${key}`]
 		};
-		if (number) {
-			res.openKeys = [`sub_${number}`];
+		if (number != null) {
+			res.defaultOpenKeys = [`sub_${number}`];
 		}
 		return res;
 	}
 	public componentWillMount() {
-		console.log(this.props);
+		//console.log(this.props);
 	}
 	public render() {
 		let navList = this.navList;
 		let { path } = this.props;
 		return (
 			<div className="menu-box">
-				<Menu theme="dark" mode="inline" {...this.setMenu(path)}>
+				<Menu
+					theme="dark"
+					mode="inline"
+					forceSubMenuRender={true}
+					{...this.setMenu(path)}
+				>
 					{navList &&
 						navList.length > 0 &&
 						navList.map((item: any, index: number) => {
