@@ -3,8 +3,9 @@ import { Input, Select, Button, Checkbox } from "antd";
 import ListPage from "../../../@mixin/listpage/";
 import FooterCtrl from "../../../components/footer_ctrl/";
 import TableBox from "../../../components/tablebox/";
+import NoPass from "../components/nopass/";
 import "./index.less";
-import Item from "antd/lib/list/Item";
+
 const Option = Select.Option;
 export interface Props {}
 export interface State {
@@ -14,6 +15,9 @@ export interface State {
 	keyword: string;
 	status: number;
 	isLoading: boolean;
+	isShowModal: boolean;
+	confirmLoading: boolean;
+	clickItem: any;
 }
 export default class Root extends ListPage<Props, State> {
 	constructor(props: Props) {
@@ -25,7 +29,10 @@ export default class Root extends ListPage<Props, State> {
 		name: "",
 		page: 1,
 		pageSize: 30,
-		isLoading: false
+		isLoading: false,
+		isShowModal: false,
+		confirmLoading: false,
+		clickItem: {}
 	};
 	public componentWillMount() {
 		this.setState({
@@ -80,6 +87,12 @@ export default class Root extends ListPage<Props, State> {
 	public applySure(item: any) {
 		console.log(item);
 	}
+	public applyNoPass(item: any) {
+		this.setState({
+			clickItem: item,
+			isShowModal: true
+		});
+	}
 	public tableHeader() {
 		return [
 			{
@@ -107,7 +120,12 @@ export default class Root extends ListPage<Props, State> {
 						>
 							审核通过
 						</span>
-						<span className="ctrlbtn">审核不通过</span>
+						<span
+							className="ctrlbtn"
+							onClick={this.applyNoPass.bind(this, item)}
+						>
+							审核不通过
+						</span>
 					</span>
 				)
 			},
@@ -123,9 +141,22 @@ export default class Root extends ListPage<Props, State> {
 			{ name: "提交截图", class: "td150 tc", key: "status" }
 		];
 	}
-
+	public closeModal(): void {
+		this.setState({
+			isShowModal: false
+		});
+	}
+	public submitModal(res: any): void {
+		console.log(res);
+	}
 	public render() {
-		let { page, pageSize, isLoading } = this.state;
+		let {
+			page,
+			pageSize,
+			isLoading,
+			isShowModal,
+			confirmLoading
+		} = this.state;
 		let data: any[] = [
 			{
 				id: 1,
@@ -161,6 +192,12 @@ export default class Root extends ListPage<Props, State> {
 						pageSize={pageSize}
 					/>
 				</div>
+				<NoPass
+					closeModal={this.closeModal.bind(this)}
+					visible={isShowModal}
+					submitClick={this.submitModal.bind(this)}
+					confirmLoading={confirmLoading}
+				/>
 			</div>
 		);
 	}

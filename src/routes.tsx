@@ -78,6 +78,13 @@ let pathConfig = [
 		src: "./entries/applicationedit",
 		path: "/application/edit",
 		isPrivate: true
+	},
+	//详情页
+	{
+		name: "UserDetail",
+		src: "./entries/userdetail",
+		path: "/user/detail",
+		isPrivate: true
 	}
 ];
 let componentObj: any = {};

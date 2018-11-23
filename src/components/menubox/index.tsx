@@ -55,7 +55,7 @@ export default class MenuBox extends React.PureComponent<Props, object> {
 			{
 				isGroup: true,
 				_name: "用户管理",
-				_icon: "snippets",
+				_icon: "user",
 				_id: 7,
 				child: [
 					{

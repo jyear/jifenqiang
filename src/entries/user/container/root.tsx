@@ -68,15 +68,7 @@ export default class Root extends ListPage<Props, State> {
 			</div>
 		);
 	}
-	public reanderHeaderRightDom() {
-		return (
-			<div>
-				<Button type="primary" className="btn">
-					新建
-				</Button>
-			</div>
-		);
-	}
+
 	public tableHeader() {
 		return [
 			{
@@ -97,17 +89,11 @@ export default class Root extends ListPage<Props, State> {
 					<span>
 						{ctrls &&
 							ctrls.length > 0 &&
-							ctrls.map((v: any, i: any) => {
-								return (
-									<span
-										onClick={v.method.bind(this, item)}
-										key={i}
-										className="ctrlbtn"
-									>
-										{v.text}
-									</span>
-								);
-							})}
+							ctrls.map((v: any, i: any) => (
+								<span>
+									<span className="ctrlbtn">用户详情</span>
+								</span>
+							))}
 					</span>
 				)
 			}
@@ -119,39 +105,11 @@ export default class Root extends ListPage<Props, State> {
 		let data: any[] = [
 			{
 				id: 1,
-				name: "张三",
-				ctrls: [
-					{
-						text: "删除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					},
-					{
-						text: "清除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					}
-				]
+				name: "张三"
 			},
 			{
 				id: 1,
-				name: "张三",
-				ctrls: [
-					{
-						text: "删除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					},
-					{
-						text: "清除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					}
-				]
+				name: "张三"
 			}
 		];
 		data = [];
@@ -159,9 +117,6 @@ export default class Root extends ListPage<Props, State> {
 			<div className="list-page-box">
 				<div className="list-header">
 					<div className="left-el">{this.renderHeaderLeftDom()}</div>
-					<div className="right-el">
-						{this.reanderHeaderRightDom()}
-					</div>
 				</div>
 				<div className="list-center">
 					<TableBox
