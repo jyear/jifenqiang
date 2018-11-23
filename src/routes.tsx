@@ -18,11 +18,65 @@ let pathConfig = [
 		path: "/dashboard",
 		isPrivate: true
 	},
-	,
 	{
 		name: "Advert",
 		src: "./entries/advert",
 		path: "/advert",
+		isPrivate: true
+	},
+	{
+		name: "Advertor",
+		src: "./entries/advertor",
+		path: "/advertor",
+		isPrivate: true
+	},
+	{
+		name: "Application",
+		src: "./entries/application",
+		path: "/application",
+		isPrivate: true
+	},
+	{
+		name: "Apply",
+		src: "./entries/apply",
+		path: "/apply",
+		isPrivate: true
+	},
+	{
+		name: "User",
+		src: "./entries/user",
+		path: "/user",
+		isPrivate: true
+	},
+	{
+		name: "Developer",
+		src: "./entries/developer",
+		path: "/developer",
+		isPrivate: true
+	},
+	{
+		name: "Manager",
+		src: "./entries/manager",
+		path: "/manager",
+		isPrivate: true
+	},
+	{
+		name: "Role",
+		src: "./entries/role",
+		path: "/role",
+		isPrivate: true
+	},
+	//编辑页面
+	{
+		name: "AdvertorEdit",
+		src: "./entries/advertoredit",
+		path: "/advertor/edit",
+		isPrivate: true
+	},
+	{
+		name: "ApplicationEdit",
+		src: "./entries/applicationedit",
+		path: "/application/edit",
 		isPrivate: true
 	}
 ];

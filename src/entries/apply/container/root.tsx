@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Input, Select, Button } from "antd";
+import { Input, Select, Button, Checkbox } from "antd";
 import ListPage from "../../../@mixin/listpage/";
 import FooterCtrl from "../../../components/footer_ctrl/";
 import TableBox from "../../../components/tablebox/";
@@ -44,7 +44,7 @@ export default class Root extends ListPage<Props, State> {
 				<Input
 					className="input-large"
 					value={keyword}
-					placeholder="请输入广告或广告主名称"
+					placeholder="请输入用户ID"
 					onChange={this.InputChange.bind(this, "keyword")}
 				/>
 				<span className="split" />
@@ -54,13 +54,13 @@ export default class Root extends ListPage<Props, State> {
 					onChange={this.InputChange.bind(this, "status")}
 				>
 					<Option key="0" value={0}>
-						全部
+						审核中
 					</Option>
 					<Option key="1" value={1}>
-						上架
+						审核通过
 					</Option>
 					<Option key="2" value={2}>
-						下架
+						审核未通过
 					</Option>
 				</Select>
 				<span className="split" />
@@ -72,47 +72,55 @@ export default class Root extends ListPage<Props, State> {
 		return (
 			<div>
 				<Button type="primary" className="btn">
-					添加Android广告
-				</Button>
-				<Button type="primary" className="btn">
-					添加ios广告
+					审核通过选中项
 				</Button>
 			</div>
 		);
 	}
+	public applySure(item: any) {
+		console.log(item);
+	}
 	public tableHeader() {
 		return [
-			{ name: "广告ID", class: "td80 tc", key: "id" },
-			{ name: "Logo", class: "td80 tc", key: "logo" },
-			{ name: "广告名称", class: "td150 tc", key: "name" },
-			{ name: "投放平台", class: "td150 tc", key: "platform" },
-			{ name: "广告类型", class: "td150 tc", key: "type" },
-			{ name: "今日限量", class: "td150 tc", key: "todaynum" },
-			{ name: "今日完成", class: "td120 tc", key: "todayend" },
-			{ name: "完成率", class: "td150 tc", key: "endprent" },
-			{ name: "状态", class: "td150 tc", key: "status" },
+			{
+				name: "ID",
+				class: "td80 tc",
+				key: "checkbox",
+				render: (keys: any, item: any) => <Checkbox />,
+				titleRender: () => (
+					<span>
+						<Checkbox />
+						<span>全选</span>
+					</span>
+				)
+			},
 			{
 				name: "操作",
 				class: "tc",
 				key: "ctrls",
-				render: (ctrls: any, item: any) => (
+				width: 200,
+				render: (item: any) => (
 					<span>
-						{ctrls &&
-							ctrls.length > 0 &&
-							ctrls.map((v: any, i: any) => {
-								return (
-									<span
-										onClick={v.method.bind(this, item)}
-										key={i}
-										className="ctrlbtn"
-									>
-										{v.text}
-									</span>
-								);
-							})}
+						<span
+							className="ctrlbtn"
+							onClick={this.applySure.bind(this, item)}
+						>
+							审核通过
+						</span>
+						<span className="ctrlbtn">审核不通过</span>
 					</span>
 				)
-			}
+			},
+			{ name: "提交时间", class: "td100 tc", key: "time" },
+			{ name: "用户ID", class: "td150 tc", key: "name" },
+			{ name: "信用等级", class: "td150 tc", key: "status" },
+			{ name: "任务ID", class: "td150 tc", key: "status" },
+			{ name: "任务名称", class: "td150 tc", key: "status" },
+			{ name: "任务价格", class: "td150 tc", key: "status" },
+			{ name: "不通过次数", class: "td150 tc", key: "status" },
+			{ name: "上次不通过原因", class: "tc", key: "status" },
+			{ name: "示例截图", class: "td150 tc", key: "status" },
+			{ name: "提交截图", class: "td150 tc", key: "status" }
 		];
 	}
 
@@ -121,42 +129,14 @@ export default class Root extends ListPage<Props, State> {
 		let data: any[] = [
 			{
 				id: 1,
-				name: "张三",
-				ctrls: [
-					{
-						text: "删除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					},
-					{
-						text: "清除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					}
-				]
+				name: "张三"
 			},
 			{
-				id: 1,
-				name: "张三",
-				ctrls: [
-					{
-						text: "删除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					},
-					{
-						text: "清除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					}
-				]
+				id: 3,
+				name: "张三"
 			}
 		];
-		data = [];
+
 		return (
 			<div className="list-page-box">
 				<div className="list-header">

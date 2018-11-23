@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Input, Select, Button } from "antd";
+import { Input, Select, Button, Checkbox } from "antd";
 import ListPage from "../../../@mixin/listpage/";
 import FooterCtrl from "../../../components/footer_ctrl/";
 import TableBox from "../../../components/tablebox/";
@@ -44,7 +44,7 @@ export default class Root extends ListPage<Props, State> {
 				<Input
 					className="input-large"
 					value={keyword}
-					placeholder="请输入广告或广告主名称"
+					placeholder="管理员姓名/ID"
 					onChange={this.InputChange.bind(this, "keyword")}
 				/>
 				<span className="split" />
@@ -54,13 +54,13 @@ export default class Root extends ListPage<Props, State> {
 					onChange={this.InputChange.bind(this, "status")}
 				>
 					<Option key="0" value={0}>
-						全部
+						所有
 					</Option>
 					<Option key="1" value={1}>
-						上架
+						启用
 					</Option>
 					<Option key="2" value={2}>
-						下架
+						禁用
 					</Option>
 				</Select>
 				<span className="split" />
@@ -72,28 +72,26 @@ export default class Root extends ListPage<Props, State> {
 		return (
 			<div>
 				<Button type="primary" className="btn">
-					添加Android广告
-				</Button>
-				<Button type="primary" className="btn">
-					添加ios广告
+					新建
 				</Button>
 			</div>
 		);
 	}
 	public tableHeader() {
 		return [
-			{ name: "广告ID", class: "td80 tc", key: "id" },
-			{ name: "Logo", class: "td80 tc", key: "logo" },
-			{ name: "广告名称", class: "td150 tc", key: "name" },
-			{ name: "投放平台", class: "td150 tc", key: "platform" },
-			{ name: "广告类型", class: "td150 tc", key: "type" },
-			{ name: "今日限量", class: "td150 tc", key: "todaynum" },
-			{ name: "今日完成", class: "td120 tc", key: "todayend" },
-			{ name: "完成率", class: "td150 tc", key: "endprent" },
+			{
+				name: "ID",
+				class: "td80 tc",
+				key: "id"
+			},
+			{ name: "姓名", class: "td150 tc", key: "name" },
+			{ name: "角色", class: "td150 tc", key: "status" },
+			{ name: "邮箱", class: "tc", key: "status" },
+			{ name: "注册时间", class: "td150 tc", key: "status" },
 			{ name: "状态", class: "td150 tc", key: "status" },
 			{
 				name: "操作",
-				class: "tc",
+				class: "td150 tc",
 				key: "ctrls",
 				render: (ctrls: any, item: any) => (
 					<span>

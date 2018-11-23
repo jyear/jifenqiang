@@ -36,11 +36,10 @@ body,
 //列表页面
 .list-page-box {
 	box-sizing: border-box;
-	position: absolute;
-	left: 0.3rem;
-	top: 0.6rem;
-	right: 0.3rem;
-	bottom: 0;
+	position: relative;
+	padding-top: 0.1rem;
+	// padding: 0.1rem 0.3rem 0 0.3rem;
+	height: 100%;
 	background: #f2f2f2;
 	.list-header {
 		display: flex;
@@ -67,7 +66,7 @@ body,
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: 0.4rem;
+		top: 0.5rem;
 		bottom: 0.6rem;
 	}
 	.list-footer {
@@ -75,5 +74,30 @@ body,
 		left: 0;
 		right: 0;
 		bottom: 0;
+	}
+}
+//编辑页面
+.edit-page {
+	margin: 0.2rem 0.3rem;
+	background: #fff;
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: column;
+	align-items: flex-start;
+	border-radius: 0.04rem;
+	.edit-box {
+		padding: 0.3rem;
+		box-sizing: border-box;
+		width: 100%;
+	}
+	.group {
+		box-sizing: border-box;
+		padding-left: 1.5rem;
+	}
+	.btnbox {
+		padding: 0.3rem 0 0.3rem calc(150px + 130px);
+		.save-btn {
+			width: 1.4rem;
+		}
 	}
 }

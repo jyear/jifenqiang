@@ -5,11 +5,23 @@ import TopBar from "../topbar";
 let userInfo: any, authArr: string[];
 const init = function() {};
 const getFakeAuth = function(): boolean {
-	authArr = ["/", "/dashboard", "/advert", "/404"];
+	authArr = [
+		"/",
+		"/dashboard",
+		"/advert",
+		"/advertor",
+		"/application",
+		"/apply",
+		"/user",
+		"/developer",
+		"/manager",
+		"/role",
+		"/404"
+	];
 	return true;
 };
 const getPageAuth = function(path: string): boolean {
-	if (authArr.indexOf(path) != -1) {
+	if (authArr.indexOf(path.replace("/edit", "")) != -1) {
 		return true;
 	}
 	return false;

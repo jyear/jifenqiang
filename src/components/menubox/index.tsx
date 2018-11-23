@@ -41,7 +41,7 @@ export default class MenuBox extends React.PureComponent<Props, object> {
 						_id: 4
 					},
 					{
-						_url: "/applicate",
+						_url: "/application",
 						_name: "应用市场列表",
 						_id: 5
 					},
@@ -72,7 +72,7 @@ export default class MenuBox extends React.PureComponent<Props, object> {
 				_id: 9,
 				child: [
 					{
-						_url: "/user",
+						_url: "/developer",
 						_name: "开发者列表",
 						_id: 10
 					}
