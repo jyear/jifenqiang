@@ -5,6 +5,7 @@ interface Props {
 	headerList: any;
 	data: any[];
 	isLoading?: boolean;
+	style?: any;
 }
 export default class TableBox extends React.PureComponent<Props> {
 	constructor(props: Props) {
@@ -40,9 +41,9 @@ export default class TableBox extends React.PureComponent<Props> {
 		return res;
 	}
 	public render() {
-		let { headerList, data, isLoading } = this.props;
+		let { headerList, data, isLoading, style } = this.props;
 		return (
-			<div className="table-container">
+			<div className="table-container" style={style}>
 				<div className="table-box" id="tableBox">
 					<div className="table-header">
 						<table className="table">
