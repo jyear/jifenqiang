@@ -1,11 +1,12 @@
 import * as React from "react";
 import { Button } from "antd";
 import "./index.less";
+import EditPage from "../../../@mixin/editpage/";
 import DetailHeader from "../../../components/detail_header/";
 import InputBox from "../../../components/inputbox/";
 import GroupName from "../../../components/groupname/";
 interface Props {}
-export default class Root extends React.PureComponent<Props, any> {
+export default class Root extends EditPage<Props, any> {
 	constructor(props: any) {
 		super(props);
 	}
@@ -13,7 +14,7 @@ export default class Root extends React.PureComponent<Props, any> {
 	goHome() {
 		window.appHistory.push("/");
 	}
-	InputChange() {}
+
 	render() {
 		return (
 			<div className="edit-page">

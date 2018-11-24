@@ -84,30 +84,17 @@ export default class Root extends ListPage<Props, State> {
 				class: "td80 tc",
 				key: "id"
 			},
-			{ name: "平台", class: "tc", key: "name" },
-			{ name: "来源", class: "td150 tc", key: "status" },
-			{ name: "注册时间", class: "td150 tc", key: "status" },
-			{ name: "累计收入", class: "td150 tc", key: "status" },
-			{ name: "信用等级", class: "td150 tc", key: "status" },
+			{ name: "角色名称", class: "tc", key: "name" },
+			{ name: "角色规则", class: "td150 tc", key: "status" },
+			{ name: "状态", class: "td150 tc", key: "status" },
 			{
 				name: "操作",
 				class: "td150 tc",
 				key: "ctrls",
 				render: (ctrls: any, item: any) => (
 					<span>
-						{ctrls &&
-							ctrls.length > 0 &&
-							ctrls.map((v: any, i: any) => {
-								return (
-									<span
-										onClick={v.method.bind(this, item)}
-										key={i}
-										className="ctrlbtn"
-									>
-										{v.text}
-									</span>
-								);
-							})}
+						<span className="ctrlbtn">编辑</span>
+						<span className="ctrlbtn">禁用</span>
 					</span>
 				)
 			}
@@ -119,42 +106,14 @@ export default class Root extends ListPage<Props, State> {
 		let data: any[] = [
 			{
 				id: 1,
-				name: "张三",
-				ctrls: [
-					{
-						text: "删除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					},
-					{
-						text: "清除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					}
-				]
+				name: "张三"
 			},
 			{
 				id: 1,
-				name: "张三",
-				ctrls: [
-					{
-						text: "删除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					},
-					{
-						text: "清除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					}
-				]
+				name: "张三"
 			}
 		];
-		data = [];
+
 		return (
 			<div className="list-page-box">
 				<div className="list-header">

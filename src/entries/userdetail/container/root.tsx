@@ -7,16 +7,43 @@ import GroupName from "../../../components/groupname/";
 import Table from "../components/table/";
 const TabPane = Tabs.TabPane;
 interface Props {}
-export default class Root extends React.PureComponent<Props, any> {
+interface State {
+	table1: TableValue;
+	table2: TableValue;
+	table3: TableValue;
+	table4: TableValue;
+}
+interface TableValue {
+	page: number;
+	pageSize: number;
+}
+export default class Root extends React.PureComponent<Props, State> {
 	constructor(props: any) {
 		super(props);
 	}
-	readonly state = {};
+	readonly state = {
+		table1: {
+			page: 1,
+			pageSize: 30
+		},
+		table2: {
+			page: 1,
+			pageSize: 30
+		},
+		table3: {
+			page: 1,
+			pageSize: 30
+		},
+		table4: {
+			page: 1,
+			pageSize: 30
+		}
+	};
 	goHome() {
 		window.appHistory.push("/");
 	}
-	InputChange() {}
-	renderTable1Header() {
+
+	renderTable1Header(): any[] {
 		return [
 			{
 				name: "创建时间",
@@ -75,6 +102,100 @@ export default class Root extends React.PureComponent<Props, any> {
 			}
 		];
 	}
+	renderTable2Header(): any[] {
+		return [
+			{
+				name: "时间",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "登陆IP",
+				key: "time",
+				class: "tc"
+			},
+			{
+				name: "平台",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "登陆应用",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "应用账号",
+				key: "time",
+				class: "tc",
+				width: 150
+			}
+		];
+	}
+	renderTable3Header(): any[] {
+		return [
+			{
+				name: "更新时间",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "应用名称",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "已安装应用记录",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "平台",
+				key: "time",
+				class: "tc",
+				width: 150
+			}
+		];
+	}
+	renderTable4Header(): any[] {
+		return [
+			{
+				name: "更新时间",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "积分变动原因",
+				key: "time",
+				class: "tc"
+			},
+			{
+				name: "积分变动",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "累计积分",
+				key: "time",
+				class: "tc",
+				width: 150
+			},
+			{
+				name: "信用等级",
+				key: "time",
+				class: "tc",
+				width: 150
+			}
+		];
+	}
 	render() {
 		return (
 			<div className="edit-page">
@@ -124,7 +245,7 @@ export default class Root extends React.PureComponent<Props, any> {
 						<TabPane tab="登陆记录" key="2">
 							<Table
 								data={[{}]}
-								headerList={this.renderTable1Header()}
+								headerList={this.renderTable2Header()}
 								total={90}
 								page={1}
 								pageSize={30}
@@ -133,7 +254,7 @@ export default class Root extends React.PureComponent<Props, any> {
 						<TabPane tab="已安装记录" key="3">
 							<Table
 								data={[{}]}
-								headerList={this.renderTable1Header()}
+								headerList={this.renderTable3Header()}
 								total={90}
 								page={1}
 								pageSize={30}
@@ -142,7 +263,7 @@ export default class Root extends React.PureComponent<Props, any> {
 						<TabPane tab="信用记录" key="4">
 							<Table
 								data={[{}]}
-								headerList={this.renderTable1Header()}
+								headerList={this.renderTable4Header()}
 								total={90}
 								page={1}
 								pageSize={30}

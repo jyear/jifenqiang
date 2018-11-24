@@ -66,6 +66,12 @@ let pathConfig = [
 		path: "/role",
 		isPrivate: true
 	},
+	{
+		name: "DevApp",
+		src: "./entries/devapp",
+		path: "/devapp",
+		isPrivate: true
+	},
 	//编辑页面
 	{
 		name: "AdvertorEdit",
@@ -77,6 +83,30 @@ let pathConfig = [
 		name: "ApplicationEdit",
 		src: "./entries/applicationedit",
 		path: "/application/edit",
+		isPrivate: true
+	},
+	{
+		name: "DeveloperEdit",
+		src: "./entries/developeredit",
+		path: "/developer/edit",
+		isPrivate: true
+	},
+	{
+		name: "DevAppEdit",
+		src: "./entries/devappedit",
+		path: "/devapp/edit",
+		isPrivate: true
+	},
+	{
+		name: "ManagerEdit",
+		src: "./entries/manageredit",
+		path: "/manager/edit",
+		isPrivate: true
+	},
+	{
+		name: "RoleEdit",
+		src: "./entries/roleedit",
+		path: "/role/edit",
 		isPrivate: true
 	},
 	//详情页

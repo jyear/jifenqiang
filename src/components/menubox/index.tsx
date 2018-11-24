@@ -100,6 +100,9 @@ export default class MenuBox extends React.PureComponent<Props, object> {
 	}
 	public setMenu(path: string) {
 		var pathname = path.toLowerCase();
+		if (path == "/devapp") {
+			pathname = "/developer";
+		}
 		var number: number, key: any;
 		this.navList.map((item, idx) => {
 			if (!item.isGroup) {

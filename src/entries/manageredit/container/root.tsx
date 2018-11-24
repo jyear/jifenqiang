@@ -6,6 +6,7 @@ import DetailHeader from "../../../components/detail_header/";
 import InputBox from "../../../components/inputbox/";
 import GroupName from "../../../components/groupname/";
 interface Props {}
+
 export default class Root extends EditPage<Props, any> {
 	constructor(props: any) {
 		super(props);
@@ -18,41 +19,49 @@ export default class Root extends EditPage<Props, any> {
 	render() {
 		return (
 			<div className="edit-page">
-				<DetailHeader title="应用市场" />
+				<DetailHeader title="管理员" />
 				<div className="edit-box">
-					<GroupName title="应用市场信息" />
+					<GroupName title="管理员信息" />
 					<div className="group">
 						<InputBox
-							labelName="应用市场名称"
+							labelName="姓名"
 							isMust={true}
 							onChange={this.InputChange.bind(this)}
 							value="2"
 						/>
 						<InputBox
-							labelName="上传安装包"
+							labelName="角色"
+							isMust={true}
+							onChange={this.InputChange.bind(this)}
+							value="1"
+							type="select"
+							optionArr={[
+								{
+									value: 0,
+									label: "测试"
+								},
+								{
+									value: 1,
+									label: "测试2"
+								}
+							]}
+						/>
+						<InputBox
+							labelName="邮箱(登陆账号)"
+							onChange={this.InputChange.bind(this)}
+							value="2"
+						/>
+
+						<InputBox
+							labelName="密码"
 							isMust={true}
 							onChange={this.InputChange.bind(this)}
 							value="2"
 						/>
 						<InputBox
-							labelName="包名"
-							isMust={true}
+							labelName="确认密码"
 							onChange={this.InputChange.bind(this)}
 							value="2"
-							disabled
-						/>
-						<InputBox
-							labelName="大小"
-							isMust={true}
-							onChange={this.InputChange.bind(this)}
-							value="2"
-							disabled
-						/>
-						<InputBox
-							labelName="备注"
-							onChange={this.InputChange.bind(this)}
-							value="2"
-							type="textarea"
 							flexTop={true}
 						/>
 					</div>

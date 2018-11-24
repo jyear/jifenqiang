@@ -72,7 +72,7 @@ export default class Root extends ListPage<Props, State> {
 		return (
 			<div>
 				<Button type="primary" className="btn">
-					新建开发者
+					接入新应用
 				</Button>
 			</div>
 		);
@@ -80,19 +80,19 @@ export default class Root extends ListPage<Props, State> {
 	public tableHeader() {
 		return [
 			{
-				name: "ID",
+				name: "序号",
 				class: "td80 tc",
 				key: "id"
 			},
-			{ name: "公司名称", class: "tc", key: "name" },
+			{ name: "应用ID", class: "td150 tc", key: "name" },
+			{ name: "应用名称", class: "tc", key: "status" },
+			{ name: "应用包名/APP ID", class: "td150 tc", key: "status" },
+			{ name: "平台", class: "td150 tc", key: "status" },
 			{ name: "状态", class: "td150 tc", key: "status" },
-			{ name: "创建时间", class: "td150 tc", key: "status" },
-			{ name: "应用", class: "td150 tc", key: "status" },
-			{ name: "余额", class: "td150 tc", key: "status" },
-			{ name: "累计收入", class: "td150 tc", key: "status" },
+			{ name: "接入时间", class: "td150 tc", key: "status" },
 			{
 				name: "操作",
-				class: "td150 tc",
+				class: "td180 tc",
 				key: "ctrls",
 				render: (ctrls: any, item: any) => (
 					<span>

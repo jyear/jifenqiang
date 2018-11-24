@@ -1,11 +1,13 @@
 import * as React from "react";
-import { Spin, Icon } from "antd";
+import { Icon } from "antd";
+import classnames from "classnames";
 import "./index.less";
 interface Props {
 	headerList: any;
 	data: any[];
 	isLoading?: boolean;
 	style?: any;
+	className?: string;
 }
 export default class TableBox extends React.PureComponent<Props> {
 	constructor(props: Props) {
@@ -41,9 +43,12 @@ export default class TableBox extends React.PureComponent<Props> {
 		return res;
 	}
 	public render() {
-		let { headerList, data, isLoading, style } = this.props;
+		let { headerList, data, isLoading, style, className } = this.props;
 		return (
-			<div className="table-container" style={style}>
+			<div
+				className={classnames("table-container", className)}
+				style={style}
+			>
 				<div className="table-box" id="tableBox">
 					<div className="table-header">
 						<table className="table">

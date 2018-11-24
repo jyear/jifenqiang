@@ -1,11 +1,13 @@
 import * as React from "react";
-import { Input, Select, Button } from "antd";
+import { Input, Select, Button, Modal, Tabs } from "antd";
 import ListPage from "../../../@mixin/listpage/";
 import FooterCtrl from "../../../components/footer_ctrl/";
 import TableBox from "../../../components/tablebox/";
+import VerifyData from "../components/verifydata/";
 import "./index.less";
-import Item from "antd/lib/list/Item";
+
 const Option = Select.Option;
+const TextArea = Input.TextArea;
 export interface Props {}
 export interface State {
 	name: string;
@@ -14,6 +16,9 @@ export interface State {
 	keyword: string;
 	status: number;
 	isLoading: boolean;
+	currentItem: any;
+	isShowDownModal: boolean;
+	downText: string;
 }
 export default class Root extends ListPage<Props, State> {
 	constructor(props: Props) {
@@ -25,7 +30,10 @@ export default class Root extends ListPage<Props, State> {
 		name: "",
 		page: 1,
 		pageSize: 30,
-		isLoading: false
+		isLoading: false,
+		isShowDownModal: false,
+		downText: "",
+		currentItem: {}
 	};
 	public componentWillMount() {
 		this.setState({
@@ -80,6 +88,21 @@ export default class Root extends ListPage<Props, State> {
 			</div>
 		);
 	}
+	//下架点击
+	public downClick(item: any) {
+		this.setState({
+			isShowDownModal: true,
+			currentItem: item
+		});
+	}
+	//下架确认
+	downSureClick() {}
+	//关闭下架弹出框
+	closeDownModal() {
+		this.setState({
+			isShowDownModal: false
+		});
+	}
 	public tableHeader() {
 		return [
 			{ name: "广告ID", class: "td80 tc", key: "id" },
@@ -97,19 +120,16 @@ export default class Root extends ListPage<Props, State> {
 				key: "ctrls",
 				render: (ctrls: any, item: any) => (
 					<span>
-						{ctrls &&
-							ctrls.length > 0 &&
-							ctrls.map((v: any, i: any) => {
-								return (
-									<span
-										onClick={v.method.bind(this, item)}
-										key={i}
-										className="ctrlbtn"
-									>
-										{v.text}
-									</span>
-								);
-							})}
+						<span className="ctrlbtn">编辑</span>
+						<span className="ctrlbtn">计数任务列表</span>
+						<span className="ctrlbtn">深度任务列表</span>
+						<span className="ctrlbtn">数据核对</span>
+						<span
+							className="ctrlbtn"
+							onClick={this.downClick.bind(this, item)}
+						>
+							下架
+						</span>
 					</span>
 				)
 			}
@@ -117,46 +137,23 @@ export default class Root extends ListPage<Props, State> {
 	}
 
 	public render() {
-		let { page, pageSize, isLoading } = this.state;
+		let {
+			page,
+			pageSize,
+			isLoading,
+			isShowDownModal,
+			downText
+		} = this.state;
 		let data: any[] = [
 			{
 				id: 1,
-				name: "张三",
-				ctrls: [
-					{
-						text: "删除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					},
-					{
-						text: "清除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					}
-				]
+				name: "张三"
 			},
 			{
 				id: 1,
-				name: "张三",
-				ctrls: [
-					{
-						text: "删除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					},
-					{
-						text: "清除",
-						method: function(item: any) {
-							console.log(item);
-						}
-					}
-				]
+				name: "张三"
 			}
 		];
-		data = [];
 		return (
 			<div className="list-page-box">
 				<div className="list-header">
@@ -181,6 +178,19 @@ export default class Root extends ListPage<Props, State> {
 						pageSize={pageSize}
 					/>
 				</div>
+				<Modal
+					title="下架原因"
+					visible={isShowDownModal}
+					onOk={this.downSureClick.bind(this)}
+					onCancel={this.closeDownModal.bind(this)}
+				>
+					<TextArea
+						value={downText}
+						onChange={this.InputChange.bind(this, "downText")}
+						style={{ height: "2rem" }}
+					/>
+				</Modal>
+				<VerifyData titleList={["数据核对", "计数数据", "深度数据"]} />
 			</div>
 		);
 	}

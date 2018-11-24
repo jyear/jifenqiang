@@ -13,6 +13,7 @@ const getFakeAuth = function(): boolean {
 		"/application",
 		"/apply",
 		"/user",
+		"/devapp",
 		"/developer",
 		"/manager",
 		"/role",

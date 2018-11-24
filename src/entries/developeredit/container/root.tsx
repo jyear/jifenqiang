@@ -18,42 +18,77 @@ export default class Root extends EditPage<Props, any> {
 	render() {
 		return (
 			<div className="edit-page">
-				<DetailHeader title="应用市场" />
+				<DetailHeader title="开发者" />
 				<div className="edit-box">
-					<GroupName title="应用市场信息" />
+					<GroupName title="基本信息" />
 					<div className="group">
 						<InputBox
-							labelName="应用市场名称"
+							labelName="公司名称"
 							isMust={true}
 							onChange={this.InputChange.bind(this)}
 							value="2"
 						/>
 						<InputBox
-							labelName="上传安装包"
+							labelName="社会统一信用代码"
 							isMust={true}
 							onChange={this.InputChange.bind(this)}
 							value="2"
 						/>
 						<InputBox
-							labelName="包名"
+							labelName="法人姓名"
 							isMust={true}
 							onChange={this.InputChange.bind(this)}
 							value="2"
-							disabled
 						/>
 						<InputBox
-							labelName="大小"
+							labelName="法人身份证"
 							isMust={true}
 							onChange={this.InputChange.bind(this)}
 							value="2"
-							disabled
+						/>
+						<InputBox
+							labelName="营业执照"
+							isMust={true}
+							onChange={this.InputChange.bind(this)}
+							value="2"
 						/>
 						<InputBox
 							labelName="备注"
+							isMust={true}
 							onChange={this.InputChange.bind(this)}
 							value="2"
 							type="textarea"
 							flexTop={true}
+						/>
+					</div>
+					<GroupName title="联系人" />
+					<div className="group">
+						<InputBox
+							labelName="姓名"
+							isMust={true}
+							onChange={this.InputChange.bind(this)}
+							value="2"
+						/>
+						<InputBox
+							labelName="职务"
+							onChange={this.InputChange.bind(this)}
+							value="2"
+						/>
+						<InputBox
+							labelName="手机"
+							isMust={true}
+							onChange={this.InputChange.bind(this)}
+							value="2"
+						/>
+						<InputBox
+							labelName="QQ"
+							onChange={this.InputChange.bind(this)}
+							value="2"
+						/>
+						<InputBox
+							labelName="邮箱"
+							onChange={this.InputChange.bind(this)}
+							value="2"
 						/>
 					</div>
 					<div className="btnbox">

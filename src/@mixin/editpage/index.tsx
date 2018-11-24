@@ -1,9 +1,8 @@
 import * as React from "react";
-import "./index.less";
-const { PureComponent } = React;
 
-export default class ListPage<P, S> extends PureComponent {
-	pageChange() {}
+import "./index.less";
+interface Props {}
+export default class EditPage<P, S> extends React.PureComponent<Props> {
 	public InputChange(tag: string, e: any) {
 		let value;
 		if (e && e.target) {
