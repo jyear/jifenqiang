@@ -30,13 +30,18 @@
 			text-align: center;
 			padding-left: 0.1rem;
 			padding-right: 0.1rem;
+			box-sizing: border-box;
+			border-right: 1px solid #e2e2e2;
+			&:nth-last-child(1) {
+				border-right-width: 0;
+			}
 		}
 	}
 	.table-body {
 		position: absolute;
 		left: 0;
 		bottom: 0;
-		right: 0;
+		width: 100%;
 		top: 0.35rem;
 		overflow: auto;
 		background: #fff;

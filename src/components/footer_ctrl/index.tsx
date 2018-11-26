@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Pagination, Checkbox, Select, Button } from "antd";
-import PropTypes from "prop-types";
+import classnames from "classnames";
 const Option = Select.Option;
 import "./index.less";
 export interface Props {
@@ -13,6 +13,7 @@ export interface Props {
 	batchValue?: number;
 	pageChange: any;
 	checkBoxChange?: any;
+	className?: string;
 }
 export interface State {
 	batch: any;
@@ -60,11 +61,12 @@ export default class FooterCtrl extends React.PureComponent<Props, State> {
 			currentPage = 1,
 			pageSize = 20,
 			total,
-			isCheckAll = false
+			isCheckAll = false,
+			className
 		} = this.props;
 		let { batch, batchValue } = this.state;
 		return (
-			<div className="footerctrl">
+			<div className={classnames("footerctrl", className)}>
 				<div className="left">
 					{batch && batch.length > 0 && (
 						<span>

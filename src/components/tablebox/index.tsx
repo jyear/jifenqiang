@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactDom from "react-dom";
 import { Icon } from "antd";
 import classnames from "classnames";
 import "./index.less";
@@ -21,14 +22,23 @@ export default class TableBox extends React.PureComponent<Props> {
 	}
 	public reckonWidth() {
 		let { headerList } = this.props;
-		let box: HTMLElement = document.querySelector("#tableBox");
+		let box = ReactDom.findDOMNode(this.refs.tableBox) as HTMLElement; //document.querySelector("#tableBox");
 		let tableW = box.clientWidth;
 		let tw: number = 0;
 		headerList.map((item: any) => {
 			if (item.width) {
 				tw = tw + item.width;
 			} else {
-				tw = tw + 150;
+				let cls = item.class.split(" ");
+				let w: number = 150;
+				cls.map((item: any) => {
+					let reg = /^td\d{1,3}$/;
+					if (reg.test(item)) {
+						w = Number(item.replace("td", ""));
+					}
+				});
+
+				tw = tw + w;
 			}
 		});
 		if (tw > tableW) {
@@ -49,7 +59,7 @@ export default class TableBox extends React.PureComponent<Props> {
 				className={classnames("table-container", className)}
 				style={style}
 			>
-				<div className="table-box" id="tableBox">
+				<div className="table-box" id="tableBox" ref="tableBox">
 					<div className="table-header">
 						<table className="table">
 							<thead>

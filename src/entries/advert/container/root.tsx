@@ -19,6 +19,7 @@ export interface State {
 	currentItem: any;
 	isShowDownModal: boolean;
 	downText: string;
+	isShowVerifyDataModal: boolean;
 }
 export default class Root extends ListPage<Props, State> {
 	constructor(props: Props) {
@@ -33,7 +34,8 @@ export default class Root extends ListPage<Props, State> {
 		isLoading: false,
 		isShowDownModal: false,
 		downText: "",
-		currentItem: {}
+		currentItem: {},
+		isShowVerifyDataModal: true
 	};
 	public componentWillMount() {
 		this.setState({
@@ -118,12 +120,18 @@ export default class Root extends ListPage<Props, State> {
 				name: "操作",
 				class: "tc",
 				key: "ctrls",
+				width: 350,
 				render: (ctrls: any, item: any) => (
 					<span>
 						<span className="ctrlbtn">编辑</span>
 						<span className="ctrlbtn">计数任务列表</span>
 						<span className="ctrlbtn">深度任务列表</span>
-						<span className="ctrlbtn">数据核对</span>
+						<span
+							className="ctrlbtn"
+							onClick={this.openVerifyDataModal.bind(this, item)}
+						>
+							数据核对
+						</span>
 						<span
 							className="ctrlbtn"
 							onClick={this.downClick.bind(this, item)}
@@ -135,14 +143,185 @@ export default class Root extends ListPage<Props, State> {
 			}
 		];
 	}
-
+	vilidDataDomList() {
+		return [
+			{
+				name: "数据核对",
+				key: 0,
+				list: [
+					{
+						name: "日期",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "开始人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "激活人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "计数人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "结算个数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "转化率",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "结算单价",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "实际单价",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "成本",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "收入",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "利润",
+						key: "date",
+						width: 150,
+						class: "tc"
+					}
+				]
+			},
+			{
+				name: "计数数据",
+				key: 1,
+				list: [
+					{
+						name: "日期",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "申请人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "申请人次",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "开始人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "开始人次",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "提交人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "提交人次",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "计数人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "返奖成功人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "完成率/人数",
+						key: "date",
+						width: 150,
+						class: "tc"
+					},
+					{
+						name: "完成率/人次",
+						key: "date",
+						width: 150,
+						class: "tc"
+					}
+				]
+			},
+			{
+				name: "深度数据",
+				key: 3,
+				list: [
+					{
+						name: "完成率/人次",
+						key: "date",
+						width: 150,
+						class: "tc"
+					}
+				]
+			}
+		];
+	}
+	closeVerifyDataModal() {
+		this.setState({
+			isShowVerifyDataModal: false
+		});
+	}
+	openVerifyDataModal(item: any) {
+		this.setState({
+			isShowVerifyDataModal: true,
+			currentItem: item
+		});
+	}
 	public render() {
 		let {
 			page,
 			pageSize,
 			isLoading,
 			isShowDownModal,
-			downText
+			downText,
+			isShowVerifyDataModal
 		} = this.state;
 		let data: any[] = [
 			{
@@ -190,7 +369,11 @@ export default class Root extends ListPage<Props, State> {
 						style={{ height: "2rem" }}
 					/>
 				</Modal>
-				<VerifyData titleList={["数据核对", "计数数据", "深度数据"]} />
+				<VerifyData
+					visible={isShowVerifyDataModal}
+					close={this.closeVerifyDataModal.bind(this)}
+					domList={this.vilidDataDomList()}
+				/>
 			</div>
 		);
 	}

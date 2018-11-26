@@ -1,18 +1,25 @@
 .verifydata-box {
 	.title {
-		font-size: 0.14rem;
+		font-size: 0.16rem;
 		cursor: pointer;
+		padding: 0.03rem 0.05rem;
 		margin: 0 0.05rem;
-		&.cur {
+		transition: all 0.3s linear;
+		border-bottom: 2px solid transparent;
+		&.cur,
+		&:hover {
 			color: rgb(18, 128, 253);
+			border-bottom: 2px solid rgb(18, 128, 253);
 		}
+	}
+	.ant-modal-header {
+		padding: 0.12rem 0.24rem;
 	}
 	.container-box {
 		height: 100%;
 		transform: translateX(0px);
 		transition: all 0.3s ease-in-out;
 		white-space: nowrap;
-		display: flex;
 	}
 	.verifydata-container {
 		width: 100%;
@@ -24,5 +31,10 @@
 	}
 	.tab-card {
 		width: 100%;
+		display: inline-block;
+	}
+	.verifydata-footer {
+		box-sizing: border-box;
+		padding-right: 0.1rem;
 	}
 }
