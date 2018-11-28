@@ -9,6 +9,7 @@
 		"module": "commonjs",
 		"target": "es5",
 		"jsx": "preserve",
+		"strictNullChecks": false,
 		"typeRoots": ["./node_modules/@types", "./src/@types"],
 		"allowSyntheticDefaultImports": true,
 		"experimentalDecorators": true,
@@ -19,7 +20,7 @@
 			"es2018",
 			"dom" // Or "es2015" or "es6" should work as well
 		],
-		"baseUrl": "./src",
+		"baseUrl": ".",
 		"paths": {
 			"@img": ["./src/assets/images"],
 			"@js": ["./src/assets/js"],

@@ -74,6 +74,12 @@ let pathConfig = [
 	},
 	//编辑页面
 	{
+		name: "AdvertEdit",
+		src: "./entries/advertedit",
+		path: "/advert/edit",
+		isPrivate: true
+	},
+	{
 		name: "AdvertorEdit",
 		src: "./entries/advertoredit",
 		path: "/advertor/edit",
@@ -107,6 +113,13 @@ let pathConfig = [
 		name: "RoleEdit",
 		src: "./entries/roleedit",
 		path: "/role/edit",
+		isPrivate: true
+	},
+	//IOS计数任务
+	{
+		name: "AdvertTime",
+		src: "./entries/adverttime",
+		path: "/advert/time",
 		isPrivate: true
 	},
 	//详情页

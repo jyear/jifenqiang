@@ -37,11 +37,11 @@ export default class Root extends EditPage<Props, any> {
 							type="select"
 							optionArr={[
 								{
-									value: 0,
+									key: 0,
 									label: "测试"
 								},
 								{
-									value: 1,
+									key: 1,
 									label: "测试2"
 								}
 							]}

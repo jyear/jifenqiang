@@ -4,6 +4,7 @@ import "./index.less";
 interface Props {}
 export default class EditPage<P, S> extends React.PureComponent<Props> {
 	public InputChange(tag: string, e: any) {
+		console.log(e);
 		let value;
 		if (e && e.target) {
 			let type = e.target.type;

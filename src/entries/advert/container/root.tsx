@@ -25,7 +25,7 @@ export default class Root extends ListPage<Props, State> {
 	constructor(props: Props) {
 		super(props);
 	}
-	readonly state = {
+	readonly state: State = {
 		keyword: "",
 		status: 0,
 		name: "",
@@ -34,7 +34,7 @@ export default class Root extends ListPage<Props, State> {
 		isLoading: false,
 		isShowDownModal: false,
 		downText: "",
-		currentItem: {},
+		currentItem: null,
 		isShowVerifyDataModal: true
 	};
 	public componentWillMount() {

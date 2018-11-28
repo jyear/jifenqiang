@@ -24,7 +24,8 @@ const getFakeAuth = function(): boolean {
 const getPageAuth = function(path: string): boolean {
 	if (
 		authArr.indexOf(path.replace("/edit", "")) != -1 ||
-		authArr.indexOf(path.replace("/detail", "")) != -1
+		authArr.indexOf(path.replace("/detail", "")) != -1 ||
+		authArr.indexOf(path.replace("/time", "")) != -1
 	) {
 		return true;
 	}

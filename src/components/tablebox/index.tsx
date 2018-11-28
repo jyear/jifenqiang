@@ -9,13 +9,15 @@ interface Props {
 	isLoading?: boolean;
 	style?: any;
 	className?: string;
+	isFullPage?: boolean;
 }
 export default class TableBox extends React.PureComponent<Props> {
 	constructor(props: Props) {
 		super(props);
 	}
 	static readonly defaultProps = {
-		isLoading: false
+		isLoading: false,
+		isFullPage: true
 	};
 	public componentDidMount() {
 		this.reckonWidth();
@@ -29,15 +31,16 @@ export default class TableBox extends React.PureComponent<Props> {
 			if (item.width) {
 				tw = tw + item.width;
 			} else {
-				let cls = item.class.split(" ");
 				let w: number = 150;
-				cls.map((item: any) => {
-					let reg = /^td\d{1,3}$/;
-					if (reg.test(item)) {
-						w = Number(item.replace("td", ""));
-					}
-				});
-
+				if (item.class && item.class.length > 0) {
+					let cls = item.class.split(" ");
+					cls.map((item: any) => {
+						let reg = /^td\d{1,3}$/;
+						if (reg.test(item)) {
+							w = Number(item.replace("td", ""));
+						}
+					});
+				}
 				tw = tw + w;
 			}
 		});
@@ -53,7 +56,14 @@ export default class TableBox extends React.PureComponent<Props> {
 		return res;
 	}
 	public render() {
-		let { headerList, data, isLoading, style, className } = this.props;
+		let {
+			headerList,
+			data,
+			isLoading,
+			style,
+			className,
+			isFullPage
+		} = this.props;
 		return (
 			<div
 				className={classnames("table-container", className)}
@@ -103,7 +113,12 @@ export default class TableBox extends React.PureComponent<Props> {
 							</thead>
 						</table>
 					</div>
-					<div className="table-body">
+					<div
+						className={classnames(
+							"table-body",
+							isFullPage ? "" : "notfull"
+						)}
+					>
 						{isLoading && (
 							<div className="loadingbox">
 								<Icon
